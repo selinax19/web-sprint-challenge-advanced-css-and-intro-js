@@ -233,7 +233,7 @@ Example, if getArtistByIndex is invoked with the artists array and the number 0,
 
 function getArtistByIndex(array, index) {
 
-  return `The artist at index ${index} is ${array[index].name}.`
+  return `the artist at index ${index} is ${array[index].name}`
 
   }
   console.log(getArtistByIndex(artists, 5))
@@ -248,20 +248,16 @@ Example born in 1901 and died in 1959 - included -- born in 1889 and died in 192
 If correct, the function should return ["Salvador Dali", "Frida Kahlo"]*/
 // Hint - Look up the .split() method
 
-function get20s(array, year){
-  let yearsSubStrings = []
-  let diedIn20s = []
-  for (let i = 0; i <array.length; i++) {
-    if 
-      yearsSubStrings.push(array[i].years.split(' ')
-  }
-  // console.log(yearsSubStrings)
-  for (let i = 0; i <yearsSubStrings.length; i++) {
-    if (((Math.floor((yearsSubStrings[i][0])/100)) * 100) === year && ((Math.floor((yearsSubStrings[i][2])/100)) * 100) === year) {
-      diedIn20s.push(array[i].name)
+function get20s(array){
+  const twentiethCentury = [];
+  array.filter( artist => {
+    let birth = Number(artist.years.split(' - ')[0]);
+    let death = Number(artist.years.split(' - ')[1]);
+    if (birth >= 1900 && death <= 2000) {
+      twentiethCentury.push(artist.name);
     }
-  }
-  return diedIn20s
+  })
+  return twentiethCentury;
 }
 
 console.log(get20s(artists, 1900))
@@ -277,8 +273,8 @@ Use removeArtist to do the following:
 For example, if removeArtist is invoked with the artists array and the number 0, it will remove Amedeo Modigliani from our dataset and return the number 19. */
 
 function removeArtist(array, index) {
-  array.splice(index, 1)
- console.log(array.length)
+  array.splice(index, 1);
+  return array.length;
 }
 
 removeArtist(artists, 0)
@@ -301,13 +297,18 @@ Use addArtist to do the following:
 
 Example: addArtist(artists) should return the artists array with the above object added to the end of the array. */
 
-function addArtist(array, id, name, years, genre, nationality, bio){
-  array.push({id: id, name: name, years: years, genre: genre, nationality: nationality, bio: bio})
-}
-
-addArtist(artists, 21, 'Selina Liu', '1999 - 2021', 'modern', 'American', 'Elegant and Classy.')
-console.log(artists)
-
+function addArtist(array){
+  array.push({
+    id: 21,
+    name: 'Selina', 
+    years: '1999 - 2021',
+    genre: 'Web Design', 
+    nationality: 'Chinese-American',
+    bio:'Quirky and Full of Hope'
+  });
+  
+  return array
+  }
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 7: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
@@ -318,13 +319,11 @@ Use lotsOfArt to do the following:
 For example lotsOfArt(artists); will return ["Amedeo Modigliani", "Rene Magritte", ... "Albrecht Dürer"]*/
 
 function lotsOfArt(array){
-  let moreThan100 = []
-  for (let i = 0; i < array.length; i++) {
-    if (array[i].paintings > 100) {
-      moreThan100.push(array[i])
-    }
-  }
-  return moreThan100
+  return array.filter( artist => artist.paintings > 100 )
+  .reduce( (prolificArtists, artist) => {
+    prolificArtists.push(artist.name);
+    return prolificArtists;
+  }, [])
 }
 
 /* ***** END OF TASKS ***** */
