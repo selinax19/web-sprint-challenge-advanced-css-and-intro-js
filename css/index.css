@@ -91,7 +91,7 @@ nav span{
     background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/John_Martin_-_The_Plains_of_Heaven_-_Google_Art_Project.jpg/1920px-John_Martin_-_The_Plains_of_Heaven_-_Google_Art_Project.jpg');		
     background-position: center;	
     color: white;	
-    width:80%;
+    width:100%;
     display:flex;
     flex-direction: column;
     justify-content: center;
@@ -148,4 +148,20 @@ button:hover{
         width: 70%; 
         height: 70%; 
     }
+    h1{
+        font-size: 40px
+    }
+    a{
+        font-size: 20px;
+        padding-left: 10%;
+    }
+    a#active-page{
+        padding-right: 10%;
+    }
+    a.bordered{
+        padding-left:10%;
+        padding-right:10%;
+    }
+
+   
 }
